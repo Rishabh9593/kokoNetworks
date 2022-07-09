@@ -5,7 +5,6 @@ def gv
 pipeline {
     agent any
     stages {
-
         stage("build image") {
             steps {
                 script {
@@ -14,9 +13,10 @@ pipeline {
                         sh 'docker build -t rishabh9593776/dockerflask-1.0 .'
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh 'docker push rishabh9593776/dockerflask-1.0'
+                    }
                 }
             }
-        }
         
+        }
     }
 }
