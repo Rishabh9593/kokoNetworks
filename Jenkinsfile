@@ -18,5 +18,17 @@ pipeline {
             }
         
         }
+
+        stage("k8") {
+            steps {
+                sshagent(['k8']) {
+                    sh "scp -o StrictHostKeyChecking=no dockerflask.yaml ubuntu@54.197.3.189:/home/ubuntu"
+                script {
+                    sh "ssh ubuntu@54.197.3.189 kubectl apply -f dockerflask.yaml"
+                    }
+                }
+            }
+        
+        }
     }
 }
