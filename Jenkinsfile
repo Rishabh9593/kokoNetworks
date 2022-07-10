@@ -22,9 +22,9 @@ pipeline {
         stage("k8") {
             steps {
                 sshagent(['k8']) {
-                    sh "scp -o StrictHostKeyChecking=no dockerflask.yaml ubuntu@34.228.8.17:/home/ubuntu"
+                    sh "scp -o StrictHostKeyChecking=no dockerflask.yaml ubuntu@54.224.211.197:/home/ubuntu"
                 script {
-                    sh "ssh ubuntu@34.228.8.170 kubectl apply -f dockerflask.yaml"
+                    sh "ssh ubuntu@54.224.211.197 kubectl apply -f dockerflask.yaml"
                     }
                 }
             }
