@@ -19,12 +19,14 @@ pipeline {
         
         }
 
-        stage("k8") {   
+        stage("k8") {
+            steps {
                 kubernetesDeploy(
                 configs: 'dockerflask.yaml',
                 kubeconfigId: 'k8s',
                 enableConfigSubstitution: true
-                )            
+                )   
+            }
         }
     }
 }
